@@ -3,16 +3,11 @@ defmodule RedisScanner do
   Documentation for `RedisScanner`.
   """
 
+  @spec stream() :: Enumerable.t()
   @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> RedisScanner.hello()
-      :world
-
+  Generates a stream from a Redis SCAN operation.
   """
-  def hello do
-    :world
+  def stream() do
+    Redix.command!(:redix, ~w(KEYS *))
   end
 end
